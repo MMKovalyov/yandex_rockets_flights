@@ -1,0 +1,26 @@
+n = int(input())
+b=[]
+d={}
+ans=''
+for i in range(n):
+    a = input().split()
+    if a[4] in 'A':
+        b.append((int(a[3]),a,-1))
+    elif a[4] in 'CS':
+        b.append((int(a[3]),a,1))
+b.sort()
+for i in b:
+    if i[0] not in d.keys():
+        d[i[0]] = 0
+        d[i[0]]+=i[2]*(int(i[1][0])*24*60+int(i[1][1])*60+int(i[1][2]))
+    else:
+        d[i[0]]+=i[2]*(int(i[1][0])*24*60+int(i[1][1])*60+int(i[1][2]))
+for key in d:
+    ans+=str(d[key])+' '
+print(ans[:-1])
+# 5
+# 50 7 25 3632 A
+# 15 0 5 3632 C
+# 50 7 26 3632 C
+# 14 21 30 3632 A
+# 14 23 52 3632 B
